@@ -3,6 +3,11 @@
 ## Setup
 
 ```
+#Install Git
+https://git-scm.com/downloads
+
+#Install Python with custom installation 
+https://www.python.org/downloads/
 
 #fork the repo
 In the top right of your page, click on the fork button. 
