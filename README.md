@@ -26,7 +26,7 @@ cd branch
 git remote add upstream https://github.com/trinity-int/branch.git
 ```
 
-##Pushing/Pulling 
+## Pushing/Pulling 
 ```
 
 ```
