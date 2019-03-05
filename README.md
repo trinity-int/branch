@@ -1,8 +1,10 @@
 # Branch
+#If you have any issues with this readme, please talk to Elliott or Collin
 
 ## Setup
 
 ```
+
 #Install Git
 https://git-scm.com/downloads
 
@@ -22,6 +24,8 @@ Run the command:
 git clone https://github.com/trinity-int/branch.git
 This link is the link you copied from the "Clone or download" button
 
+You should also clone the main repo so you can view the main project in it's current state.
+
 In your terminal: 
 
 #Go into the project folder you just cloned
@@ -33,7 +37,29 @@ git remote add upstream https://github.com/trinity-int/branch.git
 
 ## Pushing/Pulling 
 ```
+#Add all files before you commit
+git add *
 
+#Add indivual files before you commit
+git add yes.py
+git add yes.py no.py
+
+#Commit your added files
+git commit -m"This is a message about the commit. Each commit needs one. Please make your commit message concise and relevant"
+
+#Push your commits to the repo from your fork
+git push upstream master
+
+Always test the project in your own fork before pushing into the main repo
+Always push from your fork and never from the main repo
+
+#Pull the current version of the main repo into your fork
+git pull upstream master
+
+#Pull the current version of the main repo into your clone of the main repo
+git pull
+
+Always pull before you commit
 ```
 
 ## Start
