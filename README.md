@@ -8,8 +8,12 @@
 #Install Git
 https://git-scm.com/downloads
 
-#Install Python with custom installation 
+#Install Python with custom installation, make sure you have pip selected
 https://www.python.org/downloads/
+
+If you do not have a text editor you have/like, install Visual Studio Code at:
+https://code.visualstudio.com/
+Visual Studio Code also has a built in console if you use the keyboard shortcut 'ctrl + `'
 
 #fork the repo
 In the top right of your page, click on the fork button. 
@@ -20,6 +24,7 @@ https://help.github.com/en/articles/fork-a-repo
 On the the page of your forked repo click on the green button that says "Clone or download". 
 Copy the link in the menu that pops up.
 Open up your terminal and go to the folder you want to clone this project.
+
 Run the command:
 git clone https://github.com/trinity-int/branch.git
 This link is the link you copied from the "Clone or download" button
