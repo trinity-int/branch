@@ -1,6 +1,7 @@
 from flask import Flask, render_template
+from flask_bootstrap import Bootstrap
 app = Flask(__name__)
-
+Bootstrap(app)
 
 @app.route("/")
 def renderLanding():
@@ -33,4 +34,3 @@ def renderEvents():
 @app.route("/settings")
 def renderSettings():
     return render_template("settings/settings.html")
-
