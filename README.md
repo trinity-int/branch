@@ -11,6 +11,14 @@ https://git-scm.com/downloads
 #Install Python with custom installation, make sure you have pip selected
 https://www.python.org/downloads/
 
+#Install pipenv
+In your terminal: 
+pip install pipenv
+
+#Install Flask
+In your terminal: 
+pip install flask
+
 If you do not have a text editor you have/like, install Visual Studio Code at:
 https://code.visualstudio.com/
 Visual Studio Code also has a built in console if you use the keyboard shortcut 'ctrl + `'
@@ -38,6 +46,9 @@ cd branch
 
 #Create a remote of the repo you forked from
 git remote add upstream https://github.com/trinity-int/branch.git
+
+#Install initial packages
+pipenv install
 ```
 
 ## Pushing/Pulling 
@@ -64,6 +75,9 @@ git pull upstream master
 #Pull the current version of the main repo into your clone of the main repo
 git pull
 
+#Installing packages
+pipenv install
+
 Always pull before you commit
 ```
 
@@ -79,6 +93,9 @@ $env:FLASK_ENV = "development"
 Mac Terminal/Linux: 
 export FLASK_APP=flaskr
 export FLASK_ENV=development
+
+#Start your pipenv virtual environment
+pipenv shell
 
 # Start the project
 flask run
