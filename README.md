@@ -94,6 +94,9 @@ Mac Terminal/Linux:
 export FLASK_APP=flaskr
 export FLASK_ENV=development
 
+#Install packages
+pipenv install
+
 #Start your pipenv virtual environment
 pipenv shell
 
