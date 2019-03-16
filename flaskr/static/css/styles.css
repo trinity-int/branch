@@ -1,13 +1,9 @@
 /* 
+Use this colors as well as color variants of these colors found at: https://material.io/design/color/the-color-system.html#tools-for-picking-colors
 
-$primary-green: #9FB779;
-$secondary-green: #477F5B;
-$tan: #FFF0B4;
-$dark-grey: #394040;
-$light-grey: #E5DCC2; 
-
+Seafoam Green: #9FB779;
+Forest Green: #477F5B;
+Tannish Kind of: #FFF0B4;
+Dark Grey: #394040;
+Light Grey: #E5DCC2; 
 */
-
-body {
-    background-color: #9FB779;
-}

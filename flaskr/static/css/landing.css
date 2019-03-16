@@ -1,3 +1,43 @@
 body {
-    background-color: #9FB779;
+    background-color: #E5DCC2;
+}
+
+h1 {
+    font-size: 60px;
+    color: #9FB779;
+}
+
+img {
+    width: 250px;
+    padding-top: 80px;
+    padding-bottom: 0px;
+}
+
+button {
+    margin: 70px 15px 0px 15px;
+    height: 40px;
+    width: 150px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:-webkit-any-link {
+    text-decoration: none;
+}
+
+.register-button {
+    background-color: #394040;
+    color: white;   
+}
+
+.register-button:hover {
+    color: #9FB779;
+    text-decoration: none;
+}
+
+.login-button {
+    background-color: #9FB779; 
+    color: white;
 }
