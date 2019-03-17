@@ -46,9 +46,6 @@ cd branch
 
 #Create a remote of the repo you forked from
 git remote add upstream https://github.com/trinity-int/branch.git
-
-#Install initial packages
-pipenv install
 ```
 
 ## Pushing/Pulling 
@@ -99,6 +96,9 @@ pipenv install
 
 #Start your pipenv virtual environment
 pipenv shell
+
+#Initialize the database
+flask init-db
 
 # Start the project
 flask run
