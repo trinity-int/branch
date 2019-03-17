@@ -3,6 +3,7 @@ import os
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 from . import db
+from flask import send_from_directory
 
 def create_app(test_config=None):
     # create and configure the app
@@ -60,5 +61,10 @@ def create_app(test_config=None):
     @app.route("/settings")
     def renderSettings():
         return render_template("settings/settings.html")
+
+    @app.route('/favicon.ico')
+    def favicon():
+        return send_from_directory(os.path.join(app.root_path, 'static'), 
+            'favicon.ico',mimetype='image/vnd.microsoft.icon')
 
     return app
