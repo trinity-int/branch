@@ -1,5 +1,5 @@
 body {
-    background-color: #E5DCC2;
+    height: 100%;
 }
 
 h1 {
@@ -27,8 +27,42 @@ a:-webkit-any-link {
     text-decoration: none;
 }
 
-.register-button {
+p {
+    font-size: 24px;
+    color: #9FB779;
+    overflow: visible;
+}
+
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    overflow-x: hidden;
+    z-index: 1;
+    top: 0;
+    padding-top: 20px;
+}
+
+.left {
+    left: 0;
+    background-color: #FFF0B4;
+}
+
+.right {
+    right: 0;
     background-color: #394040;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+.register-button {
+    background-color: #477F5B;
     color: white;   
 }
 
@@ -40,4 +74,13 @@ a:-webkit-any-link {
 .login-button {
     background-color: #9FB779; 
     color: white;
+}
+
+.main-logo {
+    width: 600px;
+    padding-bottom: 50px;
+}
+
+.stick-logo {   
+    width: 250px;
 }
