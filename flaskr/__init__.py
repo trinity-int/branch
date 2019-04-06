@@ -44,7 +44,7 @@ def create_app(test_config=None):
 
     @app.route("/register")
     def renderRegister():
-        return render_template("register/register.html")
+        return render_template("register/register.html", cond='')
 
     @app.route("/profile")
     def renderProfile():

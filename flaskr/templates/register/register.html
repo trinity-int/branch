@@ -1,7 +1,68 @@
 {% extends "bootstrap/base.html"%}
 
 {% block content%}
+<link rel="stylesheet" href="../../static/css/register.css"> 
 
-<h1>This is the register page!</h1>
+<form class="container">
+    <h1 class="text-center register-heading">Register</h1>
+
+    <div>
+        <label for="email">Email Address *</label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" maxlength="60">
+    </div>
+
+    <div>
+        <label for="firstName">First Name *</label>
+        <input class="form-control" id="firstName" maxlength="25">
+    </div>
+
+    <div>
+        <label for="lastName">Last Name *</label>
+        <input class="form-control" id="lastName" maxlength="25">
+    </div>
+
+    <div>
+        <label for="password">Password *</label>
+        <input type="password" class="form-control" id="password" minlength="8" maxlength="64">
+    </div>
+
+    <div>
+        <label for="repeatPassword">Retype Password *</label>
+        <input type="password" class="form-control" id="repeatPassword" minlength="8" maxlength="64">
+    </div>
+
+    <div>
+        <label for="age">Age *</label>
+        <input type="number" class="form-control" id="age">
+    </div>
+
+    <div>
+        <label for="gender">Gender *</label>
+        <select class="form-control" id="gender">
+            <option></option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Non-binary</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="profilePicture">Profile Picture *</label>
+        <input type="file" class="form-control-file" id="profilePicture">
+    </div>
+
+    <div>
+        <label for="bio">Bio *</label>
+        <textarea class="form-control" id="bio" rows="3"></textarea>
+    </div>
+
+    <div>
+        <label for="interests">Event Interests *</label>
+        <select class="form-control" id="interests"></select>
+    </div>  
+    <!-- add a way to add a skill rating for each event, select list needs to be populated from dropdown -->
+
+    <button type="submit" class="btn form-button">Submit</button>
+</form>
 
 {% endblock %}
