@@ -2,8 +2,10 @@ import os
 
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
-from . import db
 from flask import send_from_directory
+
+from . import db
+from . import auth
 
 def create_app(test_config=None):
     # create and configure the app
@@ -29,6 +31,9 @@ def create_app(test_config=None):
     db.init_app(app)
 
     Bootstrap(app)
+
+    # registering routes for registering/logging in
+    app.register_blueprint(auth.bp)
 
     @app.route("/")
     def renderLanding():
