@@ -47,14 +47,6 @@ def create_app(test_config=None):
     def renderForgotPassword():
         return render_template("login/forgot.html")
 
-    @app.route("/register")
-    def renderRegister():
-        return render_template("register/register.html", cond='')
-
-    @app.route("/profile")
-    def renderProfile():
-        return render_template("profile/profile.html")
-
     @app.route("/profile/myevents")
     def renderMyEvents():
         return render_template("profile/myevents.html")

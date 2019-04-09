@@ -8,52 +8,53 @@ from flaskr.db import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
-@bp.route('/register', methods=['POST'])
+@bp.route('/register', methods=('GET', 'POST'))
 def register():
     if request.method == 'POST':
-        username = request.form['username']
+        email = request.form['email']
         password = request.form['password']
         firstName = request.form['firstName']
         lastName = request.form['lastName']
-        email = request.form['email']
-        phoneNumber = request.form['phoneNumber']
-        birthday = request.form['birthday']
+        age = request.form['age']
+        gender = request.form['gender']
         db = get_db()
         error = None
 
-        if not username:
-            error = 'Username is required'
+        if not email:
+            error = 'Email is required'
         elif not password:
             error = 'Password is required'
         elif db.execute(
-            'select ID from Users where UserName = ?', (username,)
+            'select ID from Users where Email = ?', (email,)
         ).fetchone() is not None:
-            error = 'User {} is already registered'.format(username)
+            error = 'User {} is already registered'.format(email)
 
         if error is None:
             # There's probably a better way to format this query
             db.execute(
-                'insert into Users (FirstName, LastName, UserName, Password, Email, PhoneNumber, Birthday) values (?, ?, ?, ?, ?, ?, ?)',
-                (firstName, lastName, username, generate_password_hash(password), email, phoneNumber, birthday)
+                'insert into Users (FirstName, LastName, Email, Password, Age, Gender) values (?, ?, ?, ?, ?, ?)',
+                (firstName, lastName, email, generate_password_hash(password), age, gender)
             )
             db.commit()
             return redirect(url_for('auth.login'))
 
         flash(error)
 
-@bp.route('/login', methods=['POST'])
+    return render_template('register/register.html')
+
+@bp.route('/login', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
-        username = request.form['username']
+        email = request.form['email']
         password = request.form['password']
         db = get_db()
         error = None
         user = db.execute(
-            'select * from Users where UserName = ?', (username,)
+            'select * from Users where Email = ?', (email,)
         ).fetchone()
 
-        if user is None:
-            error = 'Incorrect username'
+        if email is None:
+            error = 'Incorrect email'
         elif not check_password_hash(user['password'], password):
             error = 'Incorrect password'
 
@@ -63,6 +64,8 @@ def login():
             return redirect(url_for('index'))
 
         flash(error)
+
+    return render_template('login/login.html')
 
 @bp.before_app_request
 def load_logged_in_user():
