@@ -1,7 +1,22 @@
 {% extends "bootstrap/base.html"%}
 
 {% block content%}
+<link rel="stylesheet" href="../../static/css/login.css"> 
 
-<h1>This is the login page!</h1>
+<form class="container">
+    <h1 class="login-heading text-center">Login</h1>
+
+    <div>
+        <label for="email">Email Address *</label>
+        <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" maxlength="60">
+    </div>
+
+    <div>
+        <label for="password">Password *</label>
+        <input type="password" name="password" class="form-control" id="password" minlength="8" maxlength="64">
+    </div>
+
+    <button type="submit" class="btn form-button">Log In</button>
+</form>
 
 {% endblock %}

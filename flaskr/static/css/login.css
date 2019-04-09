@@ -1,0 +1,30 @@
+body {
+    background-color: #394040;
+}
+
+div {
+    padding-top: 30px;
+    color: white;
+}
+
+.container {
+    width: 45vw;
+    padding: 30px 0 50px 0;
+}
+
+.login-heading {
+    color: white;
+    font-size: 55px;
+}
+
+.form-button {
+    background-color: #9FB779;
+    height: 40px;
+    width: 150px;
+    margin-top: 25px;
+}
+
+.form-button:hover {
+    background-color: #9FB779;
+    color: #394040;
+}

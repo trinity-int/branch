@@ -65,7 +65,7 @@ def login():
 
         flash(error)
 
-    return render_template('login/login.html')
+    return render_template('events/events.html')
 
 @bp.before_app_request
 def load_logged_in_user():
