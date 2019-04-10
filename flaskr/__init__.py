@@ -48,14 +48,17 @@ def create_app(test_config=None):
         return render_template("login/forgot.html")
 
     @app.route("/profile/myevents")
+    @auth.login_required
     def renderMyEvents():
         return render_template("profile/myevents.html")
 
     @app.route("/events")
+    @auth.login_required
     def renderEvents():
         return render_template("events/events.html")  
 
     @app.route("/settings")
+    @auth.login_required
     def renderSettings():
         return render_template("settings/settings.html")
 
