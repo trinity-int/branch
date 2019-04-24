@@ -61,7 +61,8 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user['id']
-            return redirect(url_for('renderEvents'))
+            # this is stupid but it works
+            return redirect('/events')
 
         flash(error)
 

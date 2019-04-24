@@ -6,6 +6,7 @@ from flask import send_from_directory
 
 from . import db
 from . import auth
+from . import events
 
 def create_app(test_config=None):
     # create and configure the app
@@ -35,6 +36,10 @@ def create_app(test_config=None):
     # registering routes for registering/logging in
     app.register_blueprint(auth.bp)
 
+    # registering routes for events
+    app.register_blueprint(events.bp)
+    app.add_url_rule('/', endpoint='renderLanding')
+
     @app.route("/")
     def renderLanding():
         return render_template("landing.html")
@@ -51,11 +56,6 @@ def create_app(test_config=None):
     @auth.login_required
     def renderMyEvents():
         return render_template("profile/myevents.html")
-
-    @app.route("/events")
-    @auth.login_required
-    def renderEvents():
-        return render_template("events/events.html")  
 
     @app.route("/settings")
     @auth.login_required
