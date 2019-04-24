@@ -2,10 +2,6 @@ body {
    background-color: #E5DCC2;
 }
 
-div {
-   padding-bottom: 15px;
-}
-
 h1 {
    font-size: 20px;
    padding-bottom: 20px;
@@ -47,4 +43,8 @@ a {
 .container {
    width: 55vw;
    padding: 30px 0 50px 0;
+}
+
+.pad-bot {
+   padding-bottom: 15px;
 }
