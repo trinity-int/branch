@@ -1,4 +1,4 @@
-{% extends "bootstrap/base.html"%}
+{% extends 'navbar.html' %}
 
 {% block content%}
 <link rel="stylesheet" href="../../static/css/login.css"> 
@@ -6,12 +6,12 @@
 <form class="container" method="post">
     <h1 class="login-heading text-center">Login</h1>
 
-    <div>
+    <div class="pad">
         <label for="email">Email Address *</label>
         <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" maxlength="60">
     </div>
 
-    <div>
+    <div class="pad">
         <label for="password">Password *</label>
         <input type="password" name="password" class="form-control" id="password" minlength="8" maxlength="64">
     </div>

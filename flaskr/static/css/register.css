@@ -11,11 +11,6 @@ form {
     width: 80vh;
 }
 
-div {
-    padding-top: 20px;
-    color: white;
-}
-
 select:active, select:hover {
     outline-color: #9FB779; 
 }
@@ -40,4 +35,9 @@ select:active, select:hover {
 .form-control:focus {
     border-color: #9FB779;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(159,183,121);
+}
+
+.pad {
+    padding-top: 20px;
+    color: white;
 }
