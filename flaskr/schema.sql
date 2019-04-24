@@ -11,6 +11,7 @@ create table Events (
     Host varchar(255) not null,
     DateCreated date not null,
     EventLocation varchar(255) not null,
+    EventAddress varchar(255),
     EventType varchar(255) not null,
     EventDifficulty varchar(255) not null,
     foreign key (Host) references Users(ID)
