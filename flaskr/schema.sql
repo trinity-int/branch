@@ -8,7 +8,7 @@ create table Events (
     EventDate date not null,
     Description varchar(255) not null,
     MaxCapacity integer not null,
-    Host varchar(255) not null,
+    Host integer not null,
     DateCreated date not null,
     EventLocation varchar(255) not null,
     EventAddress varchar(255),
