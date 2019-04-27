@@ -6,7 +6,9 @@ from werkzeug.exceptions import abort
 from flaskr.auth import login_required
 from flaskr.db import get_db
 
-bp = Blueprint('blog', __name__)
+from datetime import datetime
+
+bp = Blueprint('events', __name__)
 
 @bp.route("/events")
 @login_required
@@ -21,10 +23,11 @@ def createEvent():
     if request.method == 'POST':
         eventName = request.form['eventName']
         eventDate = request.form['eventDate']
+        eventTime = request.form['eventTime']
         description = request.form['description']
         maxCapacity = request.form['maxCapacity']
-        host = request.form['host']
-        dateCreated = request.form['dateCreated']
+        host = g.user['id']
+        dateCreated = datetime.today().strftime('%Y-%m-%d')
         eventLocation = request.form['eventLocation']
         eventAddress = request.form['eventAddress']
         eventType = request.form['eventType']
@@ -33,11 +36,11 @@ def createEvent():
         error = None # TODO: error handling
 
         db.execute(
-            'insert into Events (EventName, EventDate, Description, MaxCapacity, Host, DateCreated, EventLocation, EventAddress, EventType, EventDifficulty values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-            (eventName, eventDate, description, maxCapacity, host, dateCreated, eventLocation, eventAddress, eventType, eventDifficulty)
+            'insert into Events (EventName, EventDate, EventTime, Description, MaxCapacity, Host, DateCreated, EventLocation, EventAddress, EventType, EventDifficulty) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+            (eventName, eventDate, eventTime, description, maxCapacity, host, dateCreated, eventLocation, eventAddress, eventType, eventDifficulty)
         )
 
         db.commit()
-        return redirect(url_for('renderEvents'))
+        return redirect(url_for('events.renderEvents'))
 
     return render_template('events/createEvents.html')

@@ -6,6 +6,7 @@ create table Events (
     ID integer primary key autoincrement,
     EventName varchar(255) not null,
     EventDate date not null,
+    EventTime time not null,
     Description varchar(255) not null,
     MaxCapacity integer not null,
     Host integer not null,

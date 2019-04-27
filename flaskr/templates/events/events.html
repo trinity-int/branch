@@ -4,28 +4,33 @@
 <link rel="stylesheet" href="../../static/css/events.css"> 
 
 <div class="container pad-bot">
+    <button onclick="location.href = '/events/create';" type="button" class="btn btn-default btn-circle">Create new event</button>
+</div>
+
+<div class="container pad-bot">
+    {% for event in events %}
     <div class="text-center event-card row pad-bot">
-        <h1 class="border-bottom">Tennis at That One Park - 4/26/2019</h1>
+        <h1 class="border-bottom">{{ event['EventName'] }} - {{ event['EventDate']}}</h1>
         
         <div class="col-6 text-left pad-bot">
             <div class="pad-bot">
                 <label>Time:</label>
-                <span class="align-left">2:00 pm</span>
+                <span class="align-left">{{ event['EventTime'] }}</span>
             </div>
 
             <div class="pad-bot">
                 <label>Capacity:</label>
-                <span>2/4</span>
+                <span>2 / {{ event['MaxCapacity'] }}</span>
             </div>
 
             <div class="pad-bot">
                 <label>Skill Level:</label>
-                <span>Expert</span>
+                <span>{{ event['EventDifficulty'] }}</span>
             </div>
 
             <div class="pad-bot">
                 <label>Description:</label><br>
-                <span>We are going to be playing tennis at That One Park. Looking for 3 other players. We will be playing doubles. Looking for experienced players only.</span>
+                <span>{{ event['description'] }}</span>
             </div>
         </div>
 
@@ -35,12 +40,12 @@
             </div>
 
             <div class="pad-bot">
-                <span class="font-weight-bold">That One Park</span><br>
-                <span class="text-bottom">1234 Applewood Lane Kent, Ohio 44240</span>
+                <span class="font-weight-bold">{{ event['EventLocation'] }}</span><br>
+                <span class="text-bottom">{{ event['EventAddress'] }}</span>
             </div>
         </div>   
-        </div>
+    </div>
+    {% endfor %}
 </div>
-
 
 {% endblock %}
