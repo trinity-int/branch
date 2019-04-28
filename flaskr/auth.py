@@ -62,7 +62,7 @@ def login():
             session.clear()
             session['user_id'] = user['id']
             # this is stupid but it works
-            return redirect('/events')
+            return redirect(url_for('events.renderEvents'))
 
         flash(error)
 
