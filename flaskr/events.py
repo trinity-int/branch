@@ -44,3 +44,22 @@ def createEvent():
         return redirect(url_for('events.renderEvents'))
 
     return render_template('events/createEvents.html')
+
+@bp.route("/events/register", methods=('GET', 'POST'))
+@login_required
+def registerForEvent():
+    if request.method == 'POST':
+        eventID = request.form['eventID']
+        userID = request.form['userID']
+        db = get_db()
+        error = None # TODO: error handling
+
+        db.execute(
+            'insert into UsersRegistered (EventID, UserID) values (?, ?)',
+            (eventID, userID)
+        )
+
+        db.commit()
+        return redirect(url_for('events.renderEvents'))
+
+    return redirect(url_for('events.renderEvents'))

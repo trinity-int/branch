@@ -10,7 +10,7 @@
 <div class="container pad-bot">
     {% for event in events %}
     <div class="text-center event-card row pad-bot">
-        <h1 class="border-bottom">{{ event['EventName'] }} - {{ event['EventDate']}}</h1>
+        <h1 class="border-bottom">{{ event['EventName'] }} - {{ event['EventDate'].strftime('%b %d, %Y') }}</h1>
         
         <div class="col-6 text-left pad-bot">
             <div class="pad-bot">
@@ -36,13 +36,15 @@
 
         <div class="col-6">
             <div class="pad-bot">
-                <img class="event-image" src="../../static/tennis-court.jpg">
-            </div>
-
-            <div class="pad-bot">
                 <span class="font-weight-bold">{{ event['EventLocation'] }}</span><br>
                 <span class="text-bottom">{{ event['EventAddress'] }}</span>
             </div>
+
+            <form action="/events/register" method="post">
+                <input type="hidden" name="eventID" value="{{ event['ID'] }}" />
+                <input type="hidden" name="userID" value="{{ g.user['id'] }}" />
+                <button type="submit" class="btn form-button">Register</button>
+            </form>
         </div>   
     </div>
     {% endfor %}
