@@ -29,7 +29,8 @@ create table Users (
 );
 
 create table UsersRegistered (
-    EventID integer primary key,
+    ID integer primary key autoincrement,
+    EventID integer not null,
     UserID integer not null,
     foreign key (EventID) references Events(ID),
     foreign key (UserID) references Users(ID)

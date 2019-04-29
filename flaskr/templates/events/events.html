@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="../../static/css/events.css"> 
 
 <div class="container pad-bot">
-    <button onclick="location.href = '/events/create';" type="button" class="btn btn-default btn-circle">Create new event</button>
+    <button onclick="location.href='/events/create';" type="button" class="btn btn-default btn-circle">Create new event</button>
 </div>
 
 <div class="container pad-bot">
@@ -20,7 +20,7 @@
 
             <div class="pad-bot">
                 <label>Capacity:</label>
-                <span>2 / {{ event['MaxCapacity'] }}</span>
+                <span>{{ getUsersRegistered(event['ID']) }} / {{ event['MaxCapacity'] }}</span>
             </div>
 
             <div class="pad-bot">
@@ -40,11 +40,13 @@
                 <span class="text-bottom">{{ event['EventAddress'] }}</span>
             </div>
 
+            {% if not isUserRegistered(event['ID'], g.user['id']) %}
             <form action="/events/register" method="post">
                 <input type="hidden" name="eventID" value="{{ event['ID'] }}" />
                 <input type="hidden" name="userID" value="{{ g.user['id'] }}" />
                 <button type="submit" class="btn form-button">Register</button>
             </form>
+            {% endif %}
         </div>   
     </div>
     {% endfor %}

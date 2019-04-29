@@ -14,7 +14,7 @@ bp = Blueprint('events', __name__)
 @login_required
 def renderEvents():
     db = get_db()
-    events = db.execute('select * from Events').fetchall()
+    events = db.execute('select * from Events order by EventDate').fetchall()
     return render_template('events/events.html', events=events)
 
 @bp.route("/events/create", methods=('GET', 'POST'))
@@ -52,14 +52,23 @@ def registerForEvent():
         eventID = request.form['eventID']
         userID = request.form['userID']
         db = get_db()
-        error = None # TODO: error handling
+        error = None
 
-        db.execute(
-            'insert into UsersRegistered (EventID, UserID) values (?, ?)',
+        if db.execute(
+            'select * from UsersRegistered where EventID = (?) and UserID = (?)',
             (eventID, userID)
-        )
+        ).fetchone() is not None:
+            error = "User is already registered!"
 
-        db.commit()
-        return redirect(url_for('events.renderEvents'))
+        if error == None:
+            db.execute(
+                'insert into UsersRegistered (EventID, UserID) values (?, ?)',
+                (eventID, userID)
+            )
+
+            db.commit()
+            return redirect(url_for('events.renderEvents'))
+
+        flash(error)
 
     return redirect(url_for('events.renderEvents'))

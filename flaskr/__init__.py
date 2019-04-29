@@ -67,4 +67,33 @@ def create_app(test_config=None):
         return send_from_directory(os.path.join(app.root_path, 'static'), 
             'favicon.ico',mimetype='image/vnd.microsoft.icon')
 
+    # Defined here so the function(s) can be called from the templates
+    @app.context_processor
+    def utility_processor():
+        def getUsersRegistered(eventID):
+            d = db.get_db()
+            userCount = d.execute(
+                'select count(UserID) from UsersRegistered where EventID = (?)',
+                (eventID,)
+            ).fetchone()
+            return userCount[0]
+
+        def isUserRegistered(eventID, userID):
+            d = db.get_db()
+            users = d.execute(
+                'select UserID from UsersRegistered where EventID = (?)',
+                (eventID,)
+            ).fetchall()
+
+            for user in users:
+                if user[0] == userID:
+                    return True
+
+            return False
+
+        return dict(
+            getUsersRegistered=getUsersRegistered,
+            isUserRegistered=isUserRegistered
+        )
+
     return app
