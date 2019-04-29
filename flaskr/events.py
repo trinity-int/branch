@@ -60,7 +60,7 @@ def registerForEvent():
         ).fetchone() is not None:
             error = "User is already registered!"
 
-        if error == None:
+        if error is None:
             db.execute(
                 'insert into UsersRegistered (EventID, UserID) values (?, ?)',
                 (eventID, userID)
@@ -70,5 +70,31 @@ def registerForEvent():
             return redirect(url_for('events.renderEvents'))
 
         flash(error)
+
+    return redirect(url_for('events.renderEvents'))
+
+@bp.route("/events/unregister", methods=('GET', 'POST'))
+@login_required
+def unregisterForEvent():
+    if request.method == 'POST':
+        eventID = request.form['eventID']
+        userID = request.form['userID']
+        db = get_db()
+        error = None
+
+        if db.execute(
+            'select * from UsersRegistered where EventID = (?) and UserID = (?)',
+            (eventID, userID)
+        ).fetchone() is None:
+            error = "User is not registered!"
+
+        if error is None:
+            db.execute(
+                'delete from UsersRegistered where EventID = ? and UserID = ?',
+                (eventID, userID)
+            )
+
+            db.commit()
+            return redirect(url_for('events.renderEvents'))
 
     return redirect(url_for('events.renderEvents'))

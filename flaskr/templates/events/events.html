@@ -46,6 +46,14 @@
                 <input type="hidden" name="userID" value="{{ g.user['id'] }}" />
                 <button type="submit" class="btn form-button">Register</button>
             </form>
+
+            {% else %}
+            <form action="/events/unregister" method="post">
+                <input type="hidden" name="eventID" value="{{ event['ID'] }}" />
+                <input type="hidden" name="userID" value="{{ g.user['id'] }}" />
+                <button type="submit" class="btn form-button">Unregister</button>
+            </form>
+
             {% endif %}
         </div>   
     </div>
