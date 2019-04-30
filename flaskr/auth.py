@@ -53,10 +53,10 @@ def login():
             'select * from Users where Email = ?', (email,)
         ).fetchone()
 
-        if email is None:
-            error = 'Incorrect email'
+        if user is None:
+            error = 'Incorrect email.'
         elif not check_password_hash(user['password'], password):
-            error = 'Incorrect password'
+            error = 'Incorrect password.'
 
         if error is None:
             session.clear()
