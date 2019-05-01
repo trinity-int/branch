@@ -17,6 +17,13 @@ def renderEvents():
     events = db.execute('select * from Events order by EventDate').fetchall()
     return render_template('events/events.html', events=events)
 
+@bp.route("/events/myevents")
+@login_required
+def renderMyEvents():
+    db = get_db()
+    events = db.execute('select * from Events join UsersRegistered on Events.ID = UsersRegistered.EventID order by EventDate').fetchall()
+    return render_template('events/myevents.html', events=events)
+
 @bp.route("/events/create", methods=('GET', 'POST'))
 @login_required
 def createEvent():
@@ -95,6 +102,9 @@ def unregisterForEvent():
             )
 
             db.commit()
-            return redirect(url_for('events.renderEvents'))
+            if (request.referrer.rsplit('/', 1)[-1] == 'events'):
+                return redirect(url_for('events.renderEvents'))
+            elif (request.referrer.rsplit('/', 1)[-1] == 'myevents'):
+                return redirect(url_for('events.renderMyEvents'))
 
     return redirect(url_for('events.renderEvents'))

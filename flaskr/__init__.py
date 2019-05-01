@@ -52,10 +52,10 @@ def create_app(test_config=None):
     def renderForgotPassword():
         return render_template("login/forgot.html")
 
-    @app.route("/profile/myevents")
+    @app.route("/events/myevents")
     @auth.login_required
     def renderMyEvents():
-        return render_template("profile/myevents.html")
+        return render_template("events/myevents.html")
 
     @app.route("/settings")
     @auth.login_required

@@ -26,6 +26,14 @@ a {
    color: inherit;
 }
 
+.events-heading {
+   color: black;
+   font-size: 55px;
+   padding-top: 30px;
+   padding-bottom: 20px;
+   margin-bottom: 0;
+}
+
 .event-image {
    width: 323.6px;
    height: 200px;
@@ -42,7 +50,7 @@ a {
 
 .container {
    width: 55vw;
-   padding: 30px 0 50px 0;
+   padding-top: 10px;
 }
 
 .pad-bot {

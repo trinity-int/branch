@@ -3,11 +3,11 @@
 {% block content%}
 <link rel="stylesheet" href="../../static/css/events.css"> 
 
-<h1 class="text-center events-heading">Events</h1>
+<h1 class="text-center events-heading">My Events</h1>
 
-<div class="container pad-bot">
-    <button onclick="location.href='/events/create';" type="button" class="btn btn-default btn-circle">Create new event</button>
-</div>
+{% if events == [] %}
+    <h1 class="text-center">You have no saved events</h1>
+{% endif %}
 
 <div class="container pad-bot">
     {% for event in events %}
