@@ -16,6 +16,15 @@ h2 {
 
 label {
    font-weight: bold;
+   float: left;
+}
+
+button {
+   float: left;
+}
+
+input {
+   margin-bottom: 20px;
 }
 
 span {
@@ -37,6 +46,10 @@ a {
 .event-image {
    width: 323.6px;
    height: 200px;
+}
+
+.mar {
+   margin-bottom: 20px;
 }
 
 .event-card {
