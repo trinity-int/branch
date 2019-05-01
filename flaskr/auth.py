@@ -53,11 +53,12 @@ def login():
             'select * from Users where Email = ?', (email,)
         ).fetchone()
 
-        if user is None:
-            error = 'Incorrect email.'
+        if user is None or not check_password_hash(user['password'], password):
+            error = 'Incorrect login combination.'
             flash(error)
-        elif not check_password_hash(user['password'], password):
-            error = 'Incorrect password.'
+
+        # if error != None:
+        #     flash(error)
 
         if error is None:
             session.clear()
@@ -65,8 +66,7 @@ def login():
             # this is stupid but it works
             return redirect(url_for('events.renderEvents'))
 
-        flash(error)
-    flash('fuck you')
+
     return render_template('login/login.html')
 
 @bp.before_app_request

@@ -17,6 +17,14 @@
     </div>
 
     <button type="submit" class="btn form-button">Log In</button>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <h2 class="error text-center">{{ message }}</h2>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 </form>
 
 {% endblock %}
