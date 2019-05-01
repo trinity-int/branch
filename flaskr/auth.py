@@ -55,6 +55,7 @@ def login():
 
         if user is None:
             error = 'Incorrect email.'
+            flash(error)
         elif not check_password_hash(user['password'], password):
             error = 'Incorrect password.'
 
@@ -65,7 +66,7 @@ def login():
             return redirect(url_for('events.renderEvents'))
 
         flash(error)
-
+    flash('fuck you')
     return render_template('login/login.html')
 
 @bp.before_app_request
