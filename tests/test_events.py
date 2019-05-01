@@ -73,3 +73,17 @@ def test_unregisterForEvent(client, app):
         assert get_db().execute(
             "select * from UsersRegistered where EventID = 1 and UserID = 1",
         ).fetchone() is None
+
+def test_renderMyEvents(client):
+    login(client)
+
+    assert client.get('/events/myevents').status_code == 200
+
+    createEvent(client)
+    
+    response = client.post(
+        '/events/register', data={'eventID': 1, 'userID': 1}
+    )
+
+    # Checking to see that the event name is on the page
+    assert 'my cool event' in str(client.get('/events/myevents').data)
