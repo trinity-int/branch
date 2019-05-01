@@ -35,8 +35,38 @@
         </div>
 
         <div class="col-6">
+            <div>
+                {% if event['EventType'] == "Basketball" %}
+                    <img class="event-image" src="../../static/basketball-court.jpg">
+                {% elif event['EventType'] == "Tennis" %}
+                    <img class="event-image" src="../../static/tennis-court.jpg">
+                {% elif event['EventType'] == "Soccer" %}
+                    <img class="event-image" src="../../static/soccer-field.jpg">
+                {% elif event['EventType'] == "Baseball" %}
+                    <img class="event-image" src="../../static/baseball-field.jpg">
+                {% elif event['EventType'] == "Golf" %}
+                    <img class="event-image" src="../../static/golf-court.jpg">
+                {% elif event['EventType'] == "Ultimate Frisbee" %}
+                    <img class="event-image" src="../../static/ultimate-frisbee.jpg">
+                {% elif event['EventType'] == "Hiking/Camping" %}
+                    <img class="event-image" src="../../static/hiking.jpg">
+                {% elif event['EventType'] == "Climbing" %}
+                    <img class="event-image" src="../../static/climbing.jpg">
+                {% elif event['EventType'] == "Running" %}
+                    <img class="event-image" src="../../static/running.jpg">
+                {% elif event['EventType'] == "Biking" %}
+                    <img class="event-image" src="../../static/biking.jpg">
+                {% elif event['EventType'] == "Swimming" %}
+                    <img class="event-image" src="../../static/swimming.jpg">
+                {% elif event['EventType'] == "Yoga" %}
+                    <img class="event-image" src="../../static/yoga.jpg">
+                {% elif event['EventType'] == "Fishing" %}
+                    <img class="event-image" src="../../static/fishing.jpg">
+                {% endif %}
+            </div>
+
             <div class="pad-bot">
-                <span class="font-weight-bold">{{ event['EventLocation'] }}</span><br>
+                <span class="align-bottom font-weight-bold">{{ event['EventLocation'] }}</span><br>
                 <span class="text-bottom">{{ event['EventAddress'] }}</span>
             </div>
 
