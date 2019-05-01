@@ -21,7 +21,10 @@ def renderEvents():
 @login_required
 def renderMyEvents():
     db = get_db()
-    events = db.execute('select * from Events join UsersRegistered on Events.ID = UsersRegistered.EventID order by EventDate').fetchall()
+    events = db.execute(
+        'select * from Events join UsersRegistered on Events.ID = UsersRegistered.EventID and UsersRegistered.UserID = (?) order by EventDate',
+        (g.user['id'],)
+    ).fetchall()
     return render_template('events/myevents.html', events=events)
 
 @bp.route("/events/create", methods=('GET', 'POST'))
